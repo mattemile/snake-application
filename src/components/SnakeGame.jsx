@@ -178,7 +178,7 @@ export default function SnakeGame() {
 
   return (
     <div className="game-container">
-      <h1 className="title">🐍 Jet-hr - Mileva Application</h1>
+      <h1 className="title">🐍 HR - Mileva Application</h1>
       <p className="subtitle">Mangia per scoprire perché dovresti valutarmi!</p>
 
       <div className="score">Progresso: {score} / {TARGET_MOVES}</div>
