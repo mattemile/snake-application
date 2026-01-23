@@ -1,0 +1,248 @@
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(90deg, #00ff87, #60efff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  color: #888;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.score {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #60efff;
+  font-weight: bold;
+}
+
+.game-board {
+  position: relative;
+  background: #0f0f23;
+  border: 3px solid #00ff87;
+  border-radius: 8px;
+  box-shadow: 0 0 30px rgba(0, 255, 135, 0.3);
+  touch-action: none;
+}
+
+.snake-segment {
+  position: absolute;
+  background: linear-gradient(135deg, #00ff87, #00cc6a);
+  border-radius: 4px;
+}
+
+.snake-segment.head {
+  background: linear-gradient(135deg, #60efff, #00ff87);
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(96, 239, 255, 0.5);
+}
+
+.food {
+  position: absolute;
+  background: #ff6b6b;
+  border-radius: 50%;
+  animation: pulse 0.5s ease-in-out infinite alternate;
+  box-shadow: 0 0 15px rgba(255, 107, 107, 0.7);
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.8);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.85);
+  border-radius: 5px;
+  z-index: 10;
+}
+
+.overlay h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.game-over h2 {
+  color: #ff6b6b;
+}
+
+.game-won h2 {
+  color: #00ff87;
+}
+
+.start-btn {
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  background: linear-gradient(135deg, #00ff87, #00cc6a);
+  border: none;
+  border-radius: 8px;
+  color: #1a1a2e;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.start-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 255, 135, 0.5);
+}
+
+.start-btn:active {
+  transform: scale(0.95);
+}
+
+.instructions {
+  margin-top: 1rem;
+  color: #888;
+  text-align: center;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Controlli Mobile */
+.mobile-controls {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  margin-top: 20px;
+}
+
+.mobile-controls button {
+  width: 60px;
+  height: 60px;
+  font-size: 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid #00ff87;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.mobile-controls button:active {
+  background: rgba(0, 255, 135, 0.3);
+  transform: scale(0.9);
+}
+
+.horizontal-controls {
+  display: flex;
+  gap: 60px;
+}
+
+/* Messaggi */
+.messages-container {
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.messages-container h3 {
+  color: #60efff;
+  margin-bottom: 1rem;
+}
+
+.messages {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1rem;
+  min-height: 150px;
+}
+
+.message-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  text-align: left;
+}
+
+.word {
+  display: inline;
+  transition: all 0.3s ease;
+}
+
+.word.hidden {
+  color: #333;
+  background: #333;
+  border-radius: 3px;
+  user-select: none;
+}
+
+.word.revealed {
+  color: #fff;
+  background: transparent;
+  animation: revealWord 0.4s ease-out;
+}
+
+@keyframes revealWord {
+  from {
+    color: #00ff87;
+    text-shadow: 0 0 10px #00ff87;
+  }
+  to {
+    color: #fff;
+    text-shadow: none;
+  }
+}
+
+.placeholder {
+  color: #666;
+  font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .game-container {
+    padding: 10px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .mobile-controls {
+    display: flex;
+  }
+
+  .messages-container {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 420px) {
+  .game-board {
+    transform: scale(0.85);
+    transform-origin: top center;
+  }
+}
