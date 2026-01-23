@@ -6,10 +6,13 @@ const CELL_SIZE = 20
 const INITIAL_SPEED = 150
 
 // Messaggio completo da rivelare parola per parola (personalizza questo!)
-const FULL_MESSAGE = "Non scrivo 'imparo in fretta'... te lo dimostro con questo gioco. Risolvo problemi reali con codice che funziona. Sono curioso, pratico e mi diverto a creare. Se cerchi qualcuno che fa, non solo che dice: eccomi! 🚀"
+//const FULL_MESSAGE = "Non scrivo 'imparo in fretta'... te lo dimostro con questo gioco. Risolvo problemi reali con codice che funziona. Sono curioso, pratico e mi diverto a creare. Se cerchi qualcuno che fa, non solo che dice: eccomi! 🚀"
 
+const FULL_MESSAGE = "Dai, ci siamo quasi… sta per emergere chi sono davvero! Spero che il giochino ti sia piaciuto! Sono una persona curiosa, pragmatica e mi diverto a creare: un profilo full-stack alla ricerca di nuovi stimoli professionali. Premessa importante: se state cercando una persona “da consulenza” o del tipo “abbiamo sempre fatto così, perché dovremmo cambiare stack?”, probabilmente non faccio al caso vostro. Mi sento molto più a mio agio in contesti startup e prodotto, dove si sperimenta, si migliora e ci si prende responsabilità reali. Vi ho conosciuti tramite LinkedIn e sono rimasto colpito dalla vostra realtà, ma soprattutto dalla vostra idea di andare a migliorare qualcosa che, in fondo, ci appartiene tutti."
 // Dividi in parole
 const WORDS = FULL_MESSAGE.split(' ')
+const TARGET_MOVES = 15 // Numero di cibi da mangiare per vincere
+const WORDS_PER_FOOD = Math.ceil(WORDS.length / TARGET_MOVES) // Parole rivelate per ogni cibo
 
 const getRandomPosition = (snake) => {
   let position
@@ -150,12 +153,12 @@ export default function SnakeGame() {
           const newScore = score + 1
           setScore(newScore)
 
-          // Rivela nuove parole
-          const newWordsRevealed = Math.min(newScore, WORDS.length)
+          // Rivela nuove parole (più parole per ogni cibo mangiato)
+          const newWordsRevealed = Math.min(newScore * WORDS_PER_FOOD, WORDS.length)
           setWordsRevealed(newWordsRevealed)
 
-          // Controlla vittoria
-          if (newWordsRevealed >= WORDS.length) {
+          // Controlla vittoria (dopo TARGET_MOVES cibi)
+          if (newScore >= TARGET_MOVES) {
             setGameWon(true)
             return newSnake
           }
@@ -175,10 +178,10 @@ export default function SnakeGame() {
 
   return (
     <div className="game-container">
-      <h1 className="title">🐍 Jethr - Mileva Application</h1>
+      <h1 className="title">🐍 Jet-hr - Mileva Application</h1>
       <p className="subtitle">Mangia per scoprire perché dovresti valutarmi!</p>
 
-      <div className="score">Parole: {wordsRevealed} / {WORDS.length}</div>
+      <div className="score">Progresso: {score} / {TARGET_MOVES}</div>
 
       <div
         className="game-board"
@@ -204,7 +207,7 @@ export default function SnakeGame() {
         {gameOver && (
           <div className="overlay game-over">
             <h2>💀 Game Over!</h2>
-            <p>Hai sbloccato {wordsRevealed} parole su {WORDS.length}</p>
+            <p>Hai sbloccato {score} / {TARGET_MOVES} parti del messaggio</p>
             <button className="start-btn" onClick={resetGame}>
               🔄 Riprova
             </button>
