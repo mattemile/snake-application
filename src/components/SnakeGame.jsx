@@ -6,9 +6,7 @@ const CELL_SIZE = 20
 const INITIAL_SPEED = 150
 
 // Messaggio completo da rivelare parola per parola (personalizza questo!)
-//const FULL_MESSAGE = "Non scrivo 'imparo in fretta'... te lo dimostro con questo gioco. Risolvo problemi reali con codice che funziona. Sono curioso, pratico e mi diverto a creare. Se cerchi qualcuno che fa, non solo che dice: eccomi! 🚀"
-
-const FULL_MESSAGE = "Dai, ci siamo quasi… sta per emergere chi sono davvero! Spero che il giochino ti sia piaciuto! Sono una persona curiosa, pragmatica e mi diverto a creare: un profilo full-stack alla ricerca di nuovi stimoli professionali. Premessa importante: se state cercando una persona “da consulenza” o del tipo “abbiamo sempre fatto così, perché dovremmo cambiare stack?”, probabilmente non faccio al caso vostro. Mi sento molto più a mio agio in contesti startup e prodotto, dove si sperimenta, si migliora e ci si prende responsabilità reali. Vi ho conosciuti tramite LinkedIn e sono rimasto colpito dalla vostra realtà."
+const FULL_MESSAGE = "Dai, ci siamo quasi… sta per emergere chi sono davvero! Spero che il giochino ti sia piaciuto!"
 // Dividi in parole
 const WORDS = FULL_MESSAGE.split(' ')
 const TARGET_MOVES = 15 // Numero di cibi da mangiare per vincere
