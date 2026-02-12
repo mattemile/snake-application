@@ -1,16 +1,36 @@
-# React + Vite
+# Snake Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Un gioco Snake fatto con React e Vite, pensato come modo alternativo per presentarmi.
 
-Currently, two official plugins are available:
+Il concetto è semplice: giocando a Snake si sblocca progressivamente un messaggio nascosto. Ogni volta che il serpente mangia un cibo, vengono rivelate nuove parole.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Come funziona
 
-## React Compiler
+- Il giocatore controlla il serpente con le frecce, WASD, oppure con swipe/bottoni su mobile
+- Servono 15 cibi per sbloccare il messaggio completo
+- Il serpente cresce ad ogni cibo mangiato, quindi bisogna stare attenti a non mordersi la coda
+- Il campo di gioco ha i bordi collegati (si esce da un lato e si rientra dall'altro)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Setup
 
-## Expanding the ESLint configuration
+```bash
+npm install
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Per buildare:
+
+```bash
+npm run build
+npm run preview
+```
+
+## Stack
+
+- React 19
+- Vite 7
+- CSS puro (niente librerie UI)
+
+## Struttura
+
+Il gioco sta tutto dentro `src/components/SnakeGame.jsx`. Il messaggio da rivelare e il numero di mosse necessarie si configurano direttamente nel file, nelle costanti in alto.
